@@ -4,7 +4,25 @@ description: How a checkpoint is captured mid-conversation, moved, and restored,
 ---
 
 A checkpoint moves through three steps: an agent **captures** it, something **moves** it, and
-another agent **restores** it. The tooling is [planned](../project/roadmap/); until it exists, every step below also works by hand.
+another agent **restores** it.
+
+## Install
+
+```sh
+npx skills add opencheckpoint/opencheckpoint
+```
+
+This installs the OpenCheckpoint skill, which teaches your agent the capture and restore
+procedures below. Ask it to "checkpoint this", or give it a checkpoint and ask it to continue.
+The skill validates with the `opencheckpoint` CLI, which you can also run yourself:
+
+```sh
+npx opencheckpoint validate checkpoint.json   # schema and semantic rules; exits 1 if invalid
+npx opencheckpoint inspect checkpoint.json    # what to deal with before continuing
+npx opencheckpoint render checkpoint.json     # a brief for an AI without the skill
+```
+
+The MCP server, the validator page, and the libraries are on the [roadmap](../project/roadmap/).
 
 ## Capture
 
@@ -57,21 +75,18 @@ through its own configuration: a skill, an MCP server's tool descriptions, or na
 
 | Piece                        | For                                            | What it does                                                                                                                                                                                               |
 | ---------------------------- | ---------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Skill**                    | Any agent that supports skills                 | Teaches the agent the capture and restore procedures, and uses the CLI or MCP tools when they are available. Works mid-conversation with nothing else installed.                                           |
+| **Skill** (available)        | Any agent that supports skills                 | Teaches the agent the capture and restore procedures, and uses the CLI or MCP tools when they are available. Works mid-conversation with nothing else installed.                                           |
 | **MCP server**               | Anyone using an MCP host                       | Tools to create, validate, list, fetch, and fork checkpoints. When both AIs connect to the same server, it also moves checkpoints between them.                                                            |
-| **CLI**                      | Developers, CI, and coding agents with a shell | `validate`, `inspect` (what is pending, stale, or required, and whether this environment can continue), `render` (a delimited, provenance-labelled brief for an AI with no support), and `fork`.           |
+| **CLI** (available)          | Developers, CI, and coding agents with a shell | `validate`, `inspect` (what is pending, stale, or required before continuing), and `render` (a delimited, provenance-labelled brief for an AI with no support). `fork` is planned.                         |
 | **Validator page**           | Anyone with a browser                          | Paste a checkpoint, see the validation result and a readable summary. Runs entirely in the browser.                                                                                                        |
 | **SDKs**                     | Developers of agent runtimes and applications  | Parse, validate, build, and inspect checkpoints in code. The CLI, MCP server, and validator page are built on the TypeScript SDK. Runtimes use an SDK for application-assisted capture and native restore. |
 | **Specification and schema** | Implementers                                   | The format itself.                                                                                                                                                                                         |
 
-## By hand, today
-
-Until the tooling ships:
+## Without the skill
 
 - **Capture:** give the agent the [specification](../specification/) or an
-  [example](../examples/) and ask it to write a checkpoint of the current task.
-- **Validate:** in a clone of the repository, place the file in `examples/<name>/checkpoint.json`
-  and run `npm test`, or validate it against the [schema](../schema/v0.1/checkpoint.schema.json)
-  with any JSON Schema Draft 2020-12 validator.
-- **Restore:** attach the checkpoint in the destination AI with the
-  [restoration procedure](../specification/#107-restoration-procedure) as instructions.
+  [example](../examples/) and ask it to write a checkpoint of the current task, then run
+  `npx opencheckpoint validate` on the result.
+- **Restore:** run `npx opencheckpoint render checkpoint.json` and give the destination AI the
+  brief it prints. The brief carries the restoration procedure and labels every statement's kind
+  and origin.

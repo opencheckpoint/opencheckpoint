@@ -1,0 +1,34 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "OpenCheckpoint",
+    "identifier": "opencheckpoint.org",
+    "documentationUrl": "https://opencheckpoint.org/"
+  },
+  "entries": [
+    {
+      "identifier": "urn:air:opencheckpoint.org:skill:opencheckpoint",
+      "displayName": "OpenCheckpoint",
+      "description": "Capture unfinished work as an OpenCheckpoint checkpoint so another agent, model, or session can continue it, and restore work from one safely.",
+      "type": "application/agent-skills+zip",
+      "url": "https://opencheckpoint.org/skills/opencheckpoint.zip",
+      "tags": ["checkpoint", "handoff", "agents", "context"],
+      "publisher": {
+        "identifier": "opencheckpoint.org",
+        "displayName": "OpenCheckpoint"
+      }
+    },
+    {
+      "identifier": "urn:air:opencheckpoint.org:schema:checkpoint-v0.1",
+      "displayName": "OpenCheckpoint v0.1 JSON Schema",
+      "description": "JSON Schema (Draft 2020-12) for OpenCheckpoint v0.1 documents.",
+      "type": "application/schema+json",
+      "url": "https://opencheckpoint.org/schema/v0.1/checkpoint.schema.json",
+      "tags": ["schema", "checkpoint"],
+      "publisher": {
+        "identifier": "opencheckpoint.org",
+        "displayName": "OpenCheckpoint"
+      }
+    }
+  ]
+}
