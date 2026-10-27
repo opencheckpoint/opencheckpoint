@@ -18,6 +18,22 @@ any model's internal state, and it never grants the next agent any authority.
 
 > **Status:** v0.1 draft, open for review. The format may change incompatibly before 1.0.
 
+## Use it in your agent
+
+```sh
+npx skills add opencheckpoint/opencheckpoint
+```
+
+This installs the OpenCheckpoint skill in Claude Code, Codex, Cursor, and other agents with
+skills. Ask your agent to "checkpoint this" to save the current task, or give it a checkpoint to
+continue. The skill validates every checkpoint with the CLI:
+
+```sh
+npx opencheckpoint validate checkpoint.json   # schema and semantic rules
+npx opencheckpoint inspect checkpoint.json    # what to deal with before continuing
+npx opencheckpoint render checkpoint.json     # a brief for an AI without the skill
+```
+
 ## A checkpoint, in brief
 
 ```json

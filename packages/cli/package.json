@@ -1,0 +1,47 @@
+{
+  "name": "opencheckpoint",
+  "version": "0.1.0",
+  "description": "Validate, inspect, and render OpenCheckpoint checkpoints: an open format for handing unfinished work from one AI to another.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "homepage": "https://opencheckpoint.org",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/opencheckpoint/opencheckpoint.git",
+    "directory": "packages/cli"
+  },
+  "bugs": "https://github.com/opencheckpoint/opencheckpoint/issues",
+  "keywords": [
+    "opencheckpoint",
+    "checkpoint",
+    "agents",
+    "handoff",
+    "ai",
+    "mcp"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "bin": {
+    "opencheckpoint": "bin/opencheckpoint.mjs"
+  },
+  "exports": {
+    ".": "./lib/check.mjs",
+    "./inspect": "./lib/inspect.mjs",
+    "./render": "./lib/render.mjs"
+  },
+  "files": [
+    "bin",
+    "lib",
+    "schema",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "prepack": "mkdir -p schema/v0.1 && cp ../../spec/schema/v0.1/checkpoint.schema.json schema/v0.1/ && cp ../../LICENSE ."
+  },
+  "dependencies": {
+    "ajv": "8.20.0",
+    "ajv-formats": "3.0.1"
+  }
+}

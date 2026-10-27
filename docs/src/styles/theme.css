@@ -97,24 +97,77 @@ html[data-has-hero]:not([data-has-sidebar]) {
   color: #ffffff;
 }
 .oc-tagline {
-  margin: 0 0 1rem;
+  margin: 0 0 2rem;
   max-width: 40ch;
   font-size: var(--sl-text-xl);
   line-height: 1.5;
   color: var(--oc-band-text);
 }
-.oc-paper {
+.oc-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.5rem;
+  margin: 0 0 1rem;
+}
+.oc-install {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  max-width: 100%;
+  border: 1px solid var(--oc-band-line);
+  border-radius: 0.5rem;
+  background: rgb(0 0 0 / 0.2);
+}
+.oc-install code {
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 0.625rem 0.875rem;
+  font-size: var(--sl-text-sm);
+  color: #ffffff;
+  background: none;
+}
+.oc-install button {
+  flex: none;
+  align-self: stretch;
+  padding: 0 0.875rem;
+  border: 0;
+  border-left: 1px solid var(--oc-band-line);
+  border-radius: 0 0.5rem 0.5rem 0;
+  background: none;
+  color: var(--oc-band-text);
+  font: inherit;
+  font-size: var(--sl-text-sm);
+  cursor: pointer;
+}
+.oc-install button:hover {
+  background: rgb(255 255 255 / 0.08);
+}
+.oc-install button:focus-visible,
+.oc-spec:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+.oc-spec {
+  display: inline-block;
+  padding: 0.625rem 1rem;
+  border-radius: 0.5rem;
+  background: #ffffff;
+  color: var(--oc-band);
+  font-weight: 600;
+  text-decoration: none;
+}
+.oc-spec:hover {
+  background: var(--oc-band-text);
+}
+.oc-hint {
   margin: 0 0 2rem;
-  font-size: var(--sl-text-lg);
+  max-width: 60ch;
+  font-size: var(--sl-text-sm);
   color: var(--oc-band-text);
 }
-.oc-paper a {
+.oc-hint a {
   color: #ffffff;
-  font-weight: 600;
-}
-.oc-paper span {
-  margin-left: 0.5rem;
-  font-size: var(--sl-text-sm);
 }
 .oc-file .expressive-code {
   margin: 0;

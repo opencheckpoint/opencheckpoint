@@ -12,3 +12,5 @@ public/schema/
 public/examples/
 # Compiled from paper/ by `npm run paper` and the Pages workflow
 public/opencheckpoint-whitepaper.pdf
+# Zipped from skills/ by `npm run skill-zip` and the Pages workflow
+public/skills/

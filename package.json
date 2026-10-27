@@ -8,7 +8,8 @@
     "node": ">=20"
   },
   "workspaces": [
-    "docs"
+    "docs",
+    "packages/cli"
   ],
   "scripts": {
     "test": "node tools/conformance.mjs",
@@ -16,11 +17,10 @@
     "format": "prettier --write .",
     "docs:dev": "npm run dev --workspace docs",
     "docs:build": "npm run build --workspace docs",
-    "paper": "typst compile paper/opencheckpoint-whitepaper.typ docs/public/opencheckpoint-whitepaper.pdf"
+    "paper": "typst compile paper/opencheckpoint-whitepaper.typ docs/public/opencheckpoint-whitepaper.pdf",
+    "skill-zip": "mkdir -p docs/public/skills && rm -f docs/public/skills/opencheckpoint.zip && cd skills && zip -qr ../docs/public/skills/opencheckpoint.zip opencheckpoint"
   },
   "devDependencies": {
-    "ajv": "8.20.0",
-    "ajv-formats": "3.0.1",
     "prettier": "3.9.9"
   }
 }
